@@ -29,10 +29,21 @@
     {% block extra_js %}
     {% endblock %}
 
-    <title>Boutique Ado {% block extra_title %}{% endblock %}</title>
+    <title>Online Shop {% block extra_title %}{% endblock %}</title>
   </head>
   <body>
-    <header class="container-fluid fixed-top"></header>
+    <header class="container-fluid fixed-top">
+
+      <div class="row">
+        <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left"> 
+          <a href="{% url 'myapp'%}" class="nav-link main-logo-link">
+            <h2>shop</h2>
+          </a>
+        </div>
+        <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left"> <!--add search form here--></div>
+        <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left"> <!--add shopping bag here--></div>
+      </div>
+    </header>
 
     {% if messages %}
         <div class="message-container"></div>
