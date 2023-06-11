@@ -33,17 +33,46 @@
   <body>
     <header class="container-fluid fixed-top">
 
-      <div class="row">
+      <!-- COPIED FROM BOUTIQUE ADO STUFF<div class="row">
         <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left"> 
           <a href="{% url 'myapp'%}" class="nav-link main-logo-link">
-            <h2>shop</h2>
+            <h2>LOGO</h2>
           </a>
         </div>
-        <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left"> <!--add search form here--></div>
-        <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left"> <!--add shopping bag here--></div>
+        <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left"> <!--add search form here--> <!--SEARCH</div>
+        <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left"> CART <!--add shopping bag here--><!--</div>
       </div>
-    </header>
-
+    </header> =BEGINNING OF NAVBAR-->
+<nav class="navbar navbar-expand-lg ">
+  <a class="navbar-brand" href="#">LOGO</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse " id="navbarScroll">
+    <ul class="navbar-nav m-auto my-2 my-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">HOME</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">SHOP</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" >ABOUT</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">TRENDING</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">CART</a>
+      </li>
+    </ul>
+    <form class="d-flex">
+      <input class="me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+<!--END OF NAVBAR-->
     {% if messages %}
         <div class="message-container"></div>
     {% endif %}
@@ -59,50 +88,5 @@
 
     
   </body>
-  <footer class="container py-5">
-    <div class="row">
-      <div class="col-12 col-md">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mb-2" role="img" viewBox="0 0 24 24"><title>Product</title><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/></svg>
-        <small class="d-block mb-3 text-body-secondary">&copy; 2017–2023</small>
-      </div>
-      <div class="col-6 col-md">
-        <h5>Features</h5>
-        <ul class="list-unstyled text-small">
-          <li><a class="link-secondary text-decoration-none" href="#">Cool stuff</a></li>
-          <li><a class="link-secondary text-decoration-none" href="#">Random feature</a></li>
-          <li><a class="link-secondary text-decoration-none" href="#">Team feature</a></li>
-          <li><a class="link-secondary text-decoration-none" href="#">Stuff for developers</a></li>
-          <li><a class="link-secondary text-decoration-none" href="#">Another one</a></li>
-          <li><a class="link-secondary text-decoration-none" href="#">Last time</a></li>
-        </ul>
-      </div>
-      <div class="col-6 col-md">
-        <h5>Resources</h5>
-        <ul class="list-unstyled text-small">
-          <li><a class="link-secondary text-decoration-none" href="#">Resource name</a></li>
-          <li><a class="link-secondary text-decoration-none" href="#">Resource</a></li>
-          <li><a class="link-secondary text-decoration-none" href="#">Another resource</a></li>
-          <li><a class="link-secondary text-decoration-none" href="#">Final resource</a></li>
-        </ul>
-      </div>
-      <div class="col-6 col-md">
-        <h5>Resources</h5>
-        <ul class="list-unstyled text-small">
-          <li><a class="link-secondary text-decoration-none" href="#">Business</a></li>
-          <li><a class="link-secondary text-decoration-none" href="#">Education</a></li>
-          <li><a class="link-secondary text-decoration-none" href="#">Government</a></li>
-          <li><a class="link-secondary text-decoration-none" href="#">Gaming</a></li>
-        </ul>
-      </div>
-      <div class="col-6 col-md">
-        <h5>About</h5>
-        <ul class="list-unstyled text-small">
-          <li><a class="link-secondary text-decoration-none" href="#">Team</a></li>
-          <li><a class="link-secondary text-decoration-none" href="#">Locations</a></li>
-          <li><a class="link-secondary text-decoration-none" href="#">Privacy</a></li>
-          <li><a class="link-secondary text-decoration-none" href="#">Terms</a></li>
-        </ul>
-      </div>
-    </div>
-  </footer>
+ 
 </html>
