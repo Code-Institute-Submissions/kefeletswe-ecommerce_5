@@ -14,9 +14,11 @@
 
     {% block corecss %}
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" >
     {% endblock %}
 
     {% block extra_css %}
+    
     {% endblock %}
 
     {% block corejs %}
@@ -32,45 +34,79 @@
   </head>
   <body>
     <header class="container-fluid fixed-top">
-      <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
-        <ul class="list-inline list-unstyled text-center text-lg-right my-0">
-            <li class="list-inline-item dropdown">
-                <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <div class="text-center">
-                        <div><i class="fas fa-user fa-lg"></i></div>
-                        <p class="my-0">My Account</p>
-                    </div>
-                </a>
-                <div class="dropdown-menu border-0" aria-labelledby="user-options">
-                    {% if request.user.is_authenticated %}
-                        {% if request.user.is_superuser %}
-                            <a href="" class="dropdown-item">Product Management</a>
-                        {% endif %}
-                        <a href="" class="dropdown-item">My Profile</a>
-                        <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
-                    {% else %}
-                        <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-                        <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
-                    {% endif %}
-                </div>
+      <!--BEGINNING OF NAVBAR-->
+      <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <a class="navbar-brand" href="{% url 'myapp'%}">LOGO</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse " id="navbarScroll">
+          <ul class="navbar-nav m-auto my-2 my-lg-0">
+            <li class="nav-item active">
+            <a class="nav-link" href="#">HOME</a>
             </li>
-            <li class="list-inline-item">
-                <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="">
-                    <div class="text-center">
-                        <div><i class="fas fa-shopping-bag fa-lg"></i></div>
-                        <p class="my-0">
-                            {% if grand_total %}
-                                ${{ grand_total|floatformat:2 }}
-                            {% else %}
-                                $0.00 CART
+            <li class="nav-item">
+            <a class="nav-link text-uppercase" href="#">SHOP</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" >ABOUT</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">TRENDING</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">CART</a>
+            </li>
+          </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+          
+          <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+            <ul class="list-inline list-unstyled text-center text-lg-right my-0">
+                <li class="list-inline-item dropdown">
+                    <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div class="text-center">
+                            <div><i class="fas fa-user fa-lg"></i></div>
+                            <p class="my-0">My Account</p>
+                        </div>
+                    </a>
+                    <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                        {% if request.user.is_authenticated %}
+                            {% if request.user.is_superuser %}
+                                <a href="" class="dropdown-item">Product Management</a>
                             {% endif %}
-                        </p>
+                            <a href="" class="dropdown-item">My Profile</a>
+                            <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                        {% else %}
+                            <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                            <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                        {% endif %}
                     </div>
-                </a>
-            </li>
-        </ul>
-    </div>
-</div>
+                </li>
+                <li class="list-inline-item">
+                    <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="">
+                        <div class="text-center">
+                            <div><i class="fas fa-shopping-bag fa-lg"></i></div>
+                            <p class="my-0">
+                                {% if grand_total %}
+                                    ${{ grand_total|floatformat:2 }}
+                                {% else %}
+                                    $0.00 CART
+                                {% endif %}
+                            </p>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+      </div>
+          
+        </div>
+      </nav>
+      <!--END OF NAVBAR-->
+      
 </header>
 
       <!-- COPIED FROM BOUTIQUE ADO STUFF<div class="row">
@@ -79,41 +115,12 @@
             <h2>LOGO</h2>
           </a>
         </div>
-        <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left"> <!--add search form here--> <!--SEARCH</div>
-        <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left"> CART <!--add shopping bag here--><!--</div>
-      </div>
-    </header> =BEGINNING OF NAVBAR-->
-<nav class="navbar navbar-expand-lg ">
-  <a class="navbar-brand" href="{% url 'myapp'%}">LOGO</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse " id="navbarScroll">
-    <ul class="navbar-nav m-auto my-2 my-lg-0">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">HOME</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-uppercase" href="#">SHOP</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" >ABOUT</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">TRENDING</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">CART</a>
-      </li>
-    </ul>
-    <form class="d-flex">
-      <input class="me-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
-<!--END OF NAVBAR-->
-    {% if messages %}
+        <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left"> add search form here--> <!--SEARCH</div>
+        <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left"> CART add shopping bag here-->
+    
+
+
+   <!--{% if messages %}
         <div class="message-container"></div>
     {% endif %}
 
@@ -124,7 +131,7 @@
     {% endblock %}
 
     {% block postloadjs %}
-    {% endblock %}
+    {% endblock %} -->
 
     
   </body>

@@ -1,0 +1,1 @@
+[{"model": "myapp.category", "pk": 1, "fields": {"name": "food", "friendly_name": null}}, {"model": "myapp.category", "pk": 2, "fields": {"name": "chips", "friendly_name": null}}]
