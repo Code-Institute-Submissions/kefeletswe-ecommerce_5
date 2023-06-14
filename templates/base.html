@@ -32,84 +32,85 @@
     {% block extra_js %}
     {% endblock %}
 
-    <title>Online Shop {% block extra_title %}{% endblock %}</title>
+  <title>Online Shop {% block extra_title %}{% endblock %}</title>
   </head>
   <body>
-    <header class="container-fluid fixed-top">
-      <!--BEGINNING OF NAVBAR-->
-      <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <a class="navbar-brand" href="{% url 'myapp'%}">LOGO</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+    <header">
+      <!--BEGINNING OF NAVBAR move margin to left-->
+  <nav class="navbar navbar-expand-md navbar-light bg-white border-bottom shadow-sm ">
+    <div class="container-fluid">
+      <h5 class="my-0 mr-md-auto font-weight-normal">My Cupcake Shop</h5>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+       aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse " id="navbarScroll">
-          <ul class="navbar-nav m-auto my-2 my-lg-0">
-            <li class="nav-item active">
-            <a class="nav-link" href="#">HOME</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link text-uppercase" href="#">SHOP</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" >ABOUT</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">TRENDING</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">CART</a>
-            </li>
-          </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-          
-          <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
-            <ul class="list-inline list-unstyled text-center text-lg-right my-0">
-                <li class="list-inline-item dropdown">
-                    <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <div class="text-center">
-                            <div><i class="fas fa-user fa-lg"></i></div>
-                            <p class="my-0">My Account</p>
-                        </div>
-                    </a>
-                    <div class="dropdown-menu border-0" aria-labelledby="user-options">
-                        {% if request.user.is_authenticated %}
-                            {% if request.user.is_superuser %}
-                                <a href="" class="dropdown-item">Product Management</a>
-                            {% endif %}
-                            <a href="" class="dropdown-item">My Profile</a>
-                            <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="my-2 my-md-0 mr-md-3">
+        <a class="p-2 text-dark" href="#">Features</a>
+        <a class="p-2 text-dark" href="#">Enterprise</a>
+        <a class="p-2 text-dark" href="#">Support</a>
+        <a class="p-2 text-dark" href="#">Pricing</a>
+        
+      </ul>
+    </div>
+
+ 
+        
+  <!-- My Account and shopping Bag, added navbar-collapse so that when sceen size is reduce this goes into-->
+  <div class="collapse navbar-collapse col-12 col-lg-4 my-auto py-1 py-lg-0">
+    <ul class="list-inline list-unstyled text-center text-lg-right my-0">
+        <li class="list-inline-item dropdown">
+            <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="text-center">
+                    <div><i class="fas fa-user fa-lg"></i></div>
+                    <p class="my-0">My Account</p>
+                </div>
+            </a>
+            <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                {% if request.user.is_authenticated %}
+                    {% if request.user.is_superuser %}
+                        <a href="" class="dropdown-item">Product Management</a>
+                    {% endif %}
+                    <a href="" class="dropdown-item">My Profile</a>
+                    <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                {% else %}
+                    <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                    <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                {% endif %}
+            </div>
+        </li>
+        <li class="list-inline-item">
+            <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="">
+                <div class="text-center">
+                    <div><i class="fas fa-shopping-bag fa-lg"></i></div>
+                    <p class="my-0">
+                        {% if grand_total %}
+                            ${{ grand_total|floatformat:2 }}
                         {% else %}
-                            <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-                            <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                        €0.00 CART
                         {% endif %}
-                    </div>
-                </li>
-                <li class="list-inline-item">
-                    <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="">
-                        <div class="text-center">
-                            <div><i class="fas fa-shopping-bag fa-lg"></i></div>
-                            <p class="my-0">
-                                {% if grand_total %}
-                                    ${{ grand_total|floatformat:2 }}
-                                {% else %}
-                                €0.00 CART
-                                {% endif %}
-                            </p>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </div>
-      </div>
-          
-        </div>
-      </nav>
-      <!--END OF NAVBAR-->
+                    </p>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>
+</div>
+  
+</div>
+
+</div>
+
+    
+    </div>
       
+    </div>
+    </nav>
+<!--END OF NAVBAR-->
+  
 </header>
+<div id="content">{% block content %} {% endblock %}</div>
 
       <!-- COPIED FROM BOUTIQUE ADO STUFF<div class="row">
         <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left"> 
@@ -129,13 +130,38 @@
     {% block page_header %}
     {% endblock %}
 
-    {% block content %}
-    {% endblock %}
+    
 
     {% block postloadjs %}
     {% endblock %} -->
+
+    {% block search-container %}
+       <!--SEARCH BAR-->
+       <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-right text-lg-right">
+        <div class="search-container">
+          <form action="/action_page.php">
+          <input type="text" placeholder="Search" name="search">
+          <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+          </form>
+        </div>
+            <!--END OF SEARCH BAR-->
+    {% endblock %}   
+
+
+
+ 
+  
+
+
 
     
   </body>
  
 </html>
+
+
+
+
+
+
+
